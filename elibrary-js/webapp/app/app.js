@@ -18,7 +18,7 @@
                 controllerAs: 'vm'
             })
             .otherwise({
-                redirectTo: '/admin'
+                redirectTo: '/authorBooks'
             });
     }
 
