@@ -1,17 +1,40 @@
-<!--BookCtrl-->
-<section class="content">
-    <table class="table table-bordered">
-        <tbody>
+<!--&lt;!&ndash;BookCtrl&ndash;&gt;-->
+<!--<section class="content">-->
+<!--<table class="table table-bordered">-->
+<!--<tbody>-->
+<!--<tr>-->
+<!--<th style="width: 20px">BOOK ID</th>-->
+<!--<th style="width: 50px">ISBN</th>-->
+<!--<th style="width: 50px">TITLE</th>-->
+<!--</tr>-->
+<!--<tr data-ng-repeat="book in vm.bookInfo">-->
+<!--<td>{{book.bookId}}</td>-->
+<!--<td>{{book.isbn}}</td>-->
+<!--<td>{{book.title}}</td>-->
+<!--</tr>-->
+<!--</tbody>-->
+<!--</table>-->
+<!--</section>-->
+
+<div class="span6">
+    <table class="table table-striped table-condensed">
+        <thead>
         <tr>
-            <th style="width: 20px">BOOK ID</th>
-            <th style="width: 50px">ISBN</th>
-            <th style="width: 50px">TITLE</th>
+            <th style="min-width: 80px;">BOOK ID</th>
+            <th style="min-width: 80px;">ISBN</th>
+            <th style="min-width: 80px;">TITLE</th>
+            <th style="width:20px;"></th>
+            <th style="width:20px;"></th>
         </tr>
+        </thead>
+        <tbody>
         <tr data-ng-repeat="book in vm.bookInfo">
             <td>{{book.bookId}}</td>
             <td>{{book.isbn}}</td>
             <td>{{book.title}}</td>
+            <td><a class="btn btn-small btn-primary">edit</a></td>
+            <td><a class="btn btn-small btn-danger">delete</a></td>
         </tr>
         </tbody>
     </table>
-</section>
+</div>
