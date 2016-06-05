@@ -14,7 +14,12 @@
             .then(bookFunction);
 
         function bookFunction(book) {
-            vm.bookInfo = book;
+            if (angular.isArray(book)) {
+                vm.bookInfo = book;
+
+            } else {
+                vm.bookInfo = [book];
+            }
         }
 
     }

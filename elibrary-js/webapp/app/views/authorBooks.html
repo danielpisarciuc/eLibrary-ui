@@ -1,13 +1,13 @@
 <!--AuthorCtrl-->
 <section class="content">
-    <table class="table" ng-controller="AuthorCtrl as vm">
+    <table class="table">
         <tbody>
         <tr>
             <th style="width: 20px">BOOK ID</th>
             <th style="width: 50px">ISBN</th>
             <th style="width: 50px">TITLE</th>
         </tr>
-        <tr ng-repeat="authorBook in vm.authorBooks">
+        <tr data-ng-repeat="authorBook in vm.authorBooks">
             <td>{{authorBook.bookId}}</td>
             <td>{{authorBook.isbn}}</td>
             <td>{{authorBook.title}}</td>

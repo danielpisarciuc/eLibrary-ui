@@ -1,13 +1,13 @@
 <!--BookCtrl-->
 <section class="content">
-    <table class="table" ng-controller="BookCtrl as vm">
+    <table class="table table-bordered">
         <tbody>
         <tr>
             <th style="width: 20px">BOOK ID</th>
             <th style="width: 50px">ISBN</th>
             <th style="width: 50px">TITLE</th>
         </tr>
-        <tr ng-repeat="book in vm.bookInfo">
+        <tr data-ng-repeat="book in vm.bookInfo">
             <td>{{book.bookId}}</td>
             <td>{{book.isbn}}</td>
             <td>{{book.title}}</td>
