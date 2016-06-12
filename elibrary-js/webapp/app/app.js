@@ -6,6 +6,7 @@
     app.config(config);
 
     function config($routeProvider){
+        //noinspection JSUnresolvedFunction
         $routeProvider
             .when('/authorBooks', {
                 templateUrl: 'app/views/authorBooks.html',
