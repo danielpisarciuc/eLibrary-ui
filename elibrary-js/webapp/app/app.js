@@ -1,25 +1,33 @@
 (function () {
     'use strict';
 
-    var app = angular.module('App', ['ngResource', 'ngRoute']);
+    var app = angular.module('App', ['ngResource', 'ui.router']);
 
     app.config(config);
 
-    function config($routeProvider){
-        //noinspection JSUnresolvedFunction
-        $routeProvider
-            .when('/authorBooks', {
+    function config($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/admin');
+
+        $stateProvider
+            .state('admin', {
+                url: '/admin',
+                templateUrl: 'app/views/admin.html',
+                controller: 'BookCtrl as vm'
+            })
+            .state('authorBooks', {
+                url: '/authorBooks',
                 templateUrl: 'app/views/authorBooks.html',
-                controller: 'AuthorCtrl',
-                controllerAs: 'vm'
+                controller: 'AuthorCtrl as vm'
             })
-            .when('/libraryBooks', {
+            .state('libraryBooks', {
+                url: '/libraryBooks',
                 templateUrl: 'app/views/libraryBooks.html',
-                controller: 'BookCtrl',
-                controllerAs: 'vm'
+                controller: 'BookCtrl as vm'
             })
-            .otherwise({
-                redirectTo: '/authorBooks'
+            .state('addBook', {
+                url: '/addBook',
+                templateUrl: 'app/views/addBook.html',
+                controller: 'BookCtrl as vm'
             });
     }
 

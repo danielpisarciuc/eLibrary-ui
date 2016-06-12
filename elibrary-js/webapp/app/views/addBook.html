@@ -1,0 +1,59 @@
+<section class="content-header">
+    <h1>
+        eLibrary
+        <small>create book</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref='admin'><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a ui-sref='libraryBooks'>View Books</a></li>
+        <li class="active">Add Book</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="box box-danger">
+        <form role="form" name="bookAddForm" novalidate>
+            <div class="box-body">
+                <div class="col-xs-3">
+                    <label>ISBN</label>
+                    <input ng-model="vm.newBook.isbn" type="text" class="form-control" name="isbn">
+                </div>
+                <div class="col-xs-4">
+                    <label>TITLE</label>
+                    <input ng-model="vm.newBook.title" type="text" class="form-control" name="title">
+                </div>
+                <div class="col-xs-2">
+                    <label>Format</label>
+                    <select class="form-control">
+                        <option>option 1</option>
+                        <option>option 2</option>
+                        <option>option 3</option>
+                        <option>option 4</option>
+                        <option>option 5</option>
+                    </select>
+                </div>
+                <div class="col-xs-3">
+                    <label>Language</label>
+                    <select class="form-control">
+                        <option>option 1</option>
+                        <option>option 2</option>
+                        <option>option 3</option>
+                        <option>option 4</option>
+                        <option>option 5</option>
+                    </select>
+                </div>
+                <div class="col-xs-6">
+                    <label>Author/s</label>
+                    <input ng-model="vm.newBook.author" type="text" class="form-control" name="title">
+                </div>
+            </div>
+            <div class="box-footer">
+                <div class="pull-right">
+                    <button ng-click="vm.save()" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Save
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</section>
