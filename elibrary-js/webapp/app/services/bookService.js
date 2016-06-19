@@ -6,7 +6,7 @@
 
     function bookService($q, $http) {
 
-        var BASE_URL = 'http://localhost:9091/elibrary-ds'
+        var BASE_URL = 'http://localhost:9091/elibrary-ds';
 
         return {
             createBook: createBook,

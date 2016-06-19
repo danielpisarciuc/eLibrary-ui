@@ -1,8 +1,5 @@
 <section class="content-header">
-    <h1>
-        eLibrary
-        <small>create book</small>
-    </h1>
+    <h1>---</h1>
     <ol class="breadcrumb">
         <li><a ui-sref='admin'><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a ui-sref='libraryBooks'>View Books</a></li>
@@ -11,40 +8,51 @@
 </section>
 
 <section class="content">
-    <div class="box box-danger">
-        <form role="form" name="bookAddForm" novalidate>
+    <form role="form">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">Please fill in required fileds marked with <strong><span
+                        class="glyphicon-asterisk"></span></strong></h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
             <div class="box-body">
-                <div class="col-xs-3">
-                    <label>ISBN</label>
-                    <input ng-model="vm.newBook.isbn" type="text" class="form-control" name="isbn">
+                <div class="row" style="padding-top: 2%">
+                    <label for="isbn" class="col-sm-1 control-label">ISBN<span
+                            class="glyphicon-asterisk"></span></label>
+                    <input id="isbn"
+                           class="col-md-3"
+                           ng-model="vm.newBook.isbn"
+                           type="text" name="isbn"
+                           ng-required="true">
+
+                    <label for="title" class="col-sm-1 control-label">Title<span
+                            class="glyphicon-asterisk"></span></label>
+                    <input id="title"
+                           class="col-md-5"
+                           ng-model="vm.newBook.title"
+                           type="text" name="title"
+                           ng-required="true">
                 </div>
-                <div class="col-xs-4">
-                    <label>TITLE</label>
-                    <input ng-model="vm.newBook.title" type="text" class="form-control" name="title">
-                </div>
-                <div class="col-xs-2">
-                    <label>Format</label>
-                    <select class="form-control">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
+                <div class="row" style="padding-top: 2%">
+                    <label for="format" class="col-sm-1 control-label">Format<span
+                            class="glyphicon-asterisk"></span></label>
+
+                    <!--<select2 id="format" ng-model="obj.field" s2-options="format.id as format.description for format in vm.bookFormats" options="{ allowClear: true }"></select2>-->
+                    <select ui-select2 id="format" class="col-sm-1" multiple="multiple" data-placeholder="...">
+                        <option></option>
+                        <option ng-repeat="format in vm.bookFormats" ng-selected="format.selected" ng-model="format.id">
+                            {{format.description}}
+                        </option>
                     </select>
                 </div>
-                <div class="col-xs-3">
-                    <label>Language</label>
-                    <select class="form-control">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
-                    </select>
-                </div>
-                <div class="col-xs-6">
-                    <label>Author/s</label>
-                    <input ng-model="vm.newBook.author" type="text" class="form-control" name="title">
+                <hr>
+                <div class="row" style="padding-top: 2%">
+                    <label for="summary" class="col-sm-1 control-label">Summary</label>
+                    <textarea id="summary" class="col-xs-5 textarea" rows="3"
+                              placeholder="..."></textarea>
                 </div>
             </div>
             <div class="box-footer">
@@ -53,7 +61,6 @@
                     </button>
                 </div>
             </div>
-        </form>
-
-    </div>
+        </div>
+    </form>
 </section>
