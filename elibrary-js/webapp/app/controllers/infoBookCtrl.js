@@ -14,7 +14,6 @@
                 .then(bookFunction);
         };
 
-
         bookService.getAllBooks().then(bookFunction);
 
         function bookFunction(books) {
@@ -25,10 +24,6 @@
                 vm.books = [books];
             }
         }
-
-        vm.details = function () {
-            $state.go('libraryBooks', {}, {reload: true});
-        };
 
         $scope.delete = function (id) {
             bookService.deleteBook(id)
