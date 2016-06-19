@@ -12,7 +12,7 @@
             .state('admin', {
                 url: '/admin',
                 templateUrl: 'app/views/admin.html',
-                controller: 'BookCtrl as vm'
+                controller: 'AdminCtrl as vm'
             })
             .state('authorBooks', {
                 url: '/authorBooks',
@@ -22,12 +22,12 @@
             .state('libraryBooks', {
                 url: '/libraryBooks',
                 templateUrl: 'app/views/libraryBooks.html',
-                controller: 'BookCtrl as vm'
+                controller: 'InfoBookCtrl as vm'
             })
             .state('addBook', {
                 url: '/addBook',
                 templateUrl: 'app/views/addBook.html',
-                controller: 'BookCtrl as vm'
+                controller: 'AddBookCtrl as vm'
             });
     }
 

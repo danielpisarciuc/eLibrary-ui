@@ -4,13 +4,12 @@
     angular.module('App')
         .controller('SidebarCtrl', SidebarCtrl);
 
-
-    function SidebarCtrl($location){
+    function SidebarCtrl($location) {
         var vm = this;
 
         vm.location = $location;
 
-        vm.isActive = function(location) {
+        vm.isActive = function (location) {
             return (location === $location.path());
         }
     }

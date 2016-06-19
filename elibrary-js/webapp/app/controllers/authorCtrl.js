@@ -14,7 +14,7 @@
             .then(authorFunction);
 
         function authorFunction(authorBooks) {
-            if (angular.isArray(authorBooks)){
+            if (angular.isArray(authorBooks)) {
                 vm.authorBooks = authorBooks;
             } else {
                 vm.authorBooks = [authorBooks];
