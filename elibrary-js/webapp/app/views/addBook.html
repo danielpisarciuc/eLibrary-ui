@@ -37,10 +37,28 @@
                            ng-required="true">
                 </div>
                 <div class="row" style="padding-top: 2%">
+                    <label for="subject" class="col-sm-1 control-label">Subject<span
+                            class="glyphicon-asterisk"></span></label>
+                    <select id="subject" ng-model="vm.book.bookDetails.subject" class="col-md-3">
+                        <option ng-selected="vm.book.bookDetails.subject == subject.id"
+                                ng-repeat="subject in vm.bookSubjects" ng-value="subject.id">{{subject.description}}
+                        </option>
+                    </select>
+
                     <label for="format" class="col-sm-1 control-label">Format<span
                             class="glyphicon-asterisk"></span></label>
-                    <select id="format" ng-model="vm.book.bookDetails.format">
-                        <option ng-selected="vm.book.bookDetails.format == format.id" ng-repeat="format in vm.bookFormats" ng-value="format.id">{{format.description}}</option>
+                    <select id="format" ng-model="vm.book.bookDetails.format" class="col-md-2" ng-required="true">
+                        <option ng-selected="vm.book.bookDetails.format == format.id"
+                                ng-repeat="format in vm.bookFormats" ng-value="format.id">{{format.description}}
+                        </option>
+                    </select>
+
+                    <label for="language" class="col-sm-1 control-label">Language<span
+                            class="glyphicon-asterisk"></span></label>
+                    <select id="language" ng-model="vm.book.bookDetails.language" class="col-md-2">
+                        <option ng-selected="vm.book.bookDetails.language == language.id"
+                                ng-repeat="language in vm.bookLanguages" ng-value="language.id">{{language.description}}
+                        </option>
                     </select>
                 </div>
                 <hr>

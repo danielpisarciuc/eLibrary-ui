@@ -4,42 +4,71 @@
     angular.module('App')
         .controller('AddBookCtrl', AddBookCtrl);
 
-    function AddBookCtrl($state, $log, bookService, referenceDataService) {
+    function AddBookCtrl($scope, $state, $log, bookService, referenceDataService) {
         var vm = this;
 
         vm.book = {
-            "isbn": null,
-            "title": null,
+            "isbn": '',
+            "title": '',
             "bookAuthors": [
                 {
-                    "firstName": null,
-                    "lastName": null
+                    "firstName": '',
+                    "lastName": ''
                 }
             ],
             "bookDetails": [
                 {
-                    "language": null,
-                    "format": null,
-                    "subject": null,
-                    "publicationDate": null,
-                    "description": null
+                    "language": '',
+                    "format": '',
+                    "subject": '',
+                    "publicationDate": '',
+                    "description": ''
                 }
             ]
         };
 
         vm.bookFormats = {};
+        vm.bookLanguages = {};
+        vm.bookSubjects = {};
         var BOOK_FORMAT = 'BOOK_FORMAT';
-        referenceDataService.bookFormat(BOOK_FORMAT)
-            .then(referenceData);
+        var BOOK_LANGUAGE = 'BOOK_LANGUAGE';
+        var BOOK_SUBJECT = 'BOOK_SUBJECT';
 
-        function referenceData(referenceData) {
-            if (angular.isArray(referenceData)) {
-                vm.bookFormats = referenceData;
+        referenceDataService.bookFormat(BOOK_SUBJECT)
+            .then(bookSubjects);
+
+        function bookSubjects(bookSubjects) {
+            if (angular.isArray(bookSubjects)) {
+                vm.bookSubjects = bookSubjects;
 
             } else {
-                vm.bookFormats = [referenceData];
+                vm.bookSubjects = [bookSubjects];
             }
-        };
+        }
+
+        referenceDataService.bookFormat(BOOK_LANGUAGE)
+            .then(bookLanguages);
+
+        function bookLanguages(bookLanguages) {
+            if (angular.isArray(bookLanguages)) {
+                vm.bookLanguages = bookLanguages;
+
+            } else {
+                vm.bookLanguages = [bookLanguages];
+            }
+        }
+
+        referenceDataService.bookFormat(BOOK_FORMAT)
+            .then(bookFormats);
+
+        function bookFormats(bookFormats) {
+            if (angular.isArray(bookFormats)) {
+                vm.bookFormats = bookFormats;
+
+            } else {
+                vm.bookFormats = [bookFormats];
+            }
+        }
 
         vm.save = function () {
             $log.info('Save new book...');
