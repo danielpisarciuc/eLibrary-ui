@@ -13,6 +13,7 @@
             deleteBook: deleteBook,
             upateBook: updateBook,
             getBookById: getBookById,
+            getAllBooks: getAllBooks,
             getBookDetails: getBookDetails
         }
 
@@ -39,6 +40,13 @@
                 .then(sendGetData)
                 .catch(sendGetError);
         }
+
+        function getAllBooks() {
+            return $http.get(BASE_URL + '/book/fetch/all')
+                .then(sendGetData)
+                .catch(sendGetError);
+        }
+
 
         function getBookDetails(bookId) {
             return $http.get(BASE_URL + '/book/details/' + bookId)

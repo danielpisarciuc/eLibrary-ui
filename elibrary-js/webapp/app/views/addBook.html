@@ -24,7 +24,7 @@
                             class="glyphicon-asterisk"></span></label>
                     <input id="isbn"
                            class="col-md-3"
-                           ng-model="vm.newBook.isbn"
+                           ng-model="vm.book.isbn"
                            type="text" name="isbn"
                            ng-required="true">
 
@@ -32,26 +32,22 @@
                             class="glyphicon-asterisk"></span></label>
                     <input id="title"
                            class="col-md-5"
-                           ng-model="vm.newBook.title"
+                           ng-model="vm.book.title"
                            type="text" name="title"
                            ng-required="true">
                 </div>
                 <div class="row" style="padding-top: 2%">
                     <label for="format" class="col-sm-1 control-label">Format<span
                             class="glyphicon-asterisk"></span></label>
-
-                    <!--<select2 id="format" ng-model="obj.field" s2-options="format.id as format.description for format in vm.bookFormats" options="{ allowClear: true }"></select2>-->
-                    <select ui-select2 id="format" class="col-sm-1" multiple="multiple" data-placeholder="...">
-                        <option></option>
-                        <option ng-repeat="format in vm.bookFormats" ng-selected="format.selected" ng-model="format.id">
-                            {{format.description}}
-                        </option>
+                    <select id="format" ng-model="vm.book.bookDetails.format">
+                        <option ng-selected="vm.book.bookDetails.format == format.id" ng-repeat="format in vm.bookFormats" ng-value="format.id">{{format.description}}</option>
                     </select>
                 </div>
                 <hr>
                 <div class="row" style="padding-top: 2%">
                     <label for="summary" class="col-sm-1 control-label">Summary</label>
-                    <textarea id="summary" class="col-xs-5 textarea" rows="3"
+                    <textarea id="summary" ng-model="vm.book.bookDetails.description"
+                              class="col-xs-5 textarea" rows="3"
                               placeholder="..."></textarea>
                 </div>
             </div>

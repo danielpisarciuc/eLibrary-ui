@@ -7,9 +7,27 @@
     function AddBookCtrl($state, $log, bookService, referenceDataService) {
         var vm = this;
 
-        vm.newBook = {};
-        vm.bookFormats = {};
+        vm.book = {
+            "isbn": null,
+            "title": null,
+            "bookAuthors": [
+                {
+                    "firstName": null,
+                    "lastName": null
+                }
+            ],
+            "bookDetails": [
+                {
+                    "language": null,
+                    "format": null,
+                    "subject": null,
+                    "publicationDate": null,
+                    "description": null
+                }
+            ]
+        };
 
+        vm.bookFormats = {};
         var BOOK_FORMAT = 'BOOK_FORMAT';
         referenceDataService.bookFormat(BOOK_FORMAT)
             .then(referenceData);
@@ -25,7 +43,7 @@
 
         vm.save = function () {
             $log.info('Save new book...');
-            bookService.createBook(vm.newBook)
+            bookService.createBook(vm.book)
                 .then(addBookSuccess)
         };
 

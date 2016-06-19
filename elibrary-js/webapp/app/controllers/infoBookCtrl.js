@@ -4,23 +4,39 @@
     angular.module('App')
         .controller('InfoBookCtrl', InfoBookCtrl);
 
-    function InfoBookCtrl(bookService) {
+    function InfoBookCtrl($scope, $state, $log, $stateParams, bookService) {
         var vm = this;
 
-        vm.bookInfo = [];
+        vm.books = [];
 
-        var bookId = 69;
-        bookService.getBookById(bookId)
-            .then(bookFunction);
+        $scope.editBook = function () {
+            bookService.getBookById($stateParams.bookId)
+                .then(bookFunction);
+        };
 
-        function bookFunction(book) {
-            if (angular.isArray(book)) {
-                vm.bookInfo = book;
+
+        bookService.getAllBooks().then(bookFunction);
+
+        function bookFunction(books) {
+            if (angular.isArray(books)) {
+                vm.books = books;
 
             } else {
-                vm.bookInfo = [book];
+                vm.books = [books];
             }
         }
 
+        vm.details = function () {
+            $state.go('libraryBooks', {}, {reload: true});
+        };
+
+        $scope.delete = function (id) {
+            bookService.deleteBook(id)
+                .then(function (message) {
+                    $log.warn(message);
+                    $state.go('libraryBooks', {}, {reload: true});
+                })
+
+        }
     }
 }());
