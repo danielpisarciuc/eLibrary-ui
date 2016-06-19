@@ -11,22 +11,35 @@
 
 <section class="content">
     <div class="row">
+        <!-- TODO search book -->
+        <form class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search by isbn, title or author name...">
+                <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+                </span>
+            </div>
+        </form>
+    </div>
+
+    <div class="row">
         <div class="box-body">
             <table id="libraryBooks" class="table table-bordered table-hover dataTable" role="grid">
                 <thead>
                 <tr>
-                    <th>BOOK ID</th>
                     <th>ISBN</th>
                     <th>TITLE</th>
+                    <th>Author</th>
                     <th></th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr data-ng-repeat="book in vm.books">
-                    <td>{{book.bookId}}</td>
                     <td>{{book.isbn}}</td>
-                    <td>{{book.title}}</td>
+                    <td><a ui-sref="bookInfo({id: book.bookId})">{{book.title}}</a></td>
+                    <td ng-repeat="author in book.bookAuthors">{{author.firstName + ' '+ author.lastName}}</td>
                     <td><button ng-click="editBook(book.bookId)" class="btn btn-xs center-block btn-primary">Edit</button></td>
                     <td><button ng-click="delete(book.bookId)" class="btn btn-xs btn-danger"><i class="fa fa-check-square-o"></i> Delete</button></td>
                 </tr>

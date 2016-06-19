@@ -22,8 +22,14 @@
             .state('libraryBooks', {
                 url: '/libraryBooks',
                 templateUrl: 'app/views/libraryBooks.html',
-                controller: 'InfoBookCtrl as vm'
+                controller: 'LibraryBooksCtrl as vm'
             })
+            .state('bookInfo', {
+                url: '/book/:id',
+                templateUrl: 'app/views/bookInfo.html',
+                controller: 'BookInfo as vm'
+            })
+
             .state('addBook', {
                 url: '/addBook',
                 templateUrl: 'app/views/addBook.html',

@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('App')
-        .controller('InfoBookCtrl', InfoBookCtrl);
+        .controller('LibraryBooksCtrl', LibraryBooksCtrl);
 
-    function InfoBookCtrl($scope, $state, $log, $stateParams, bookService) {
+    function LibraryBooksCtrl($scope, $state, $log, $stateParams, bookService) {
         var vm = this;
 
         vm.books = [];

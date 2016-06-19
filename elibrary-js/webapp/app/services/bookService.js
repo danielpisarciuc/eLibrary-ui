@@ -14,7 +14,8 @@
             upateBook: updateBook,
             getBookById: getBookById,
             getAllBooks: getAllBooks,
-            getBookDetails: getBookDetails
+            getBookDetails: getBookDetails,
+            searchBook: searchBook
         }
 
         function createBook(book) {
@@ -47,9 +48,15 @@
                 .catch(sendGetError);
         }
 
-
         function getBookDetails(bookId) {
             return $http.get(BASE_URL + '/book/details/' + bookId)
+                .then(sendGetData)
+                .catch(sendGetError);
+        }
+
+        //TODO size query param
+        function searchBook(searchTerm) {
+            return $http.get(BASE_URL + '/search/' + searchTerm)
                 .then(sendGetData)
                 .catch(sendGetError);
         }
