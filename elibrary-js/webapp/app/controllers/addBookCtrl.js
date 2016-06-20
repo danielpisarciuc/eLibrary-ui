@@ -7,26 +7,6 @@
     function AddBookCtrl($scope, $state, $log, bookService, referenceDataService) {
         var vm = this;
 
-        vm.book = {
-            "isbn": '',
-            "title": '',
-            "bookAuthors": [
-                {
-                    "firstName": '',
-                    "lastName": ''
-                }
-            ],
-            "bookDetails": [
-                {
-                    "language": '',
-                    "format": '',
-                    "subject": '',
-                    "publicationDate": '',
-                    "description": ''
-                }
-            ]
-        };
-
         vm.bookFormats = {};
         vm.bookLanguages = {};
         vm.bookSubjects = {};
@@ -70,10 +50,36 @@
             }
         }
 
-        vm.save = function () {
+        $scope.save = function () {
+
+
+            var data = {
+                "isbn": vm.book.isbn,
+                "title": vm.book.title,
+                "bookAuthors": [
+                    {
+                        "firstName": vm.bookAuthors ? vm.bookAuthors.firstName : null,
+                        "lastName": vm.bookAuthors ? vm.bookAuthors.lastName : null
+                    }
+                ],
+                "bookDetails": [
+                    {
+                        "language": vm.bookDetails.language,
+                        "format": vm.bookDetails.format,
+                        "subject": vm.bookDetails.subject,
+                        "publicationDate": vm.bookDetails.publicationDate,
+                        "description": vm.bookDetails.description
+                    }
+                ]
+            };
+
+
             $log.info('Save new book...');
-            bookService.createBook(vm.book)
-                .then(addBookSuccess)
+            bookService.createBook(data)
+                .then(function (message) {
+                    $log.info(message);
+                    $state.go('libraryBooks', {}, {reload: true});
+                })
         };
 
         function addBookSuccess(msg) {

@@ -39,39 +39,53 @@
                 <div class="row" style="padding-top: 2%">
                     <label for="subject" class="col-sm-1 control-label">Subject<span
                             class="glyphicon-asterisk"></span></label>
-                    <select id="subject" ng-model="vm.book.bookDetails.subject" class="col-md-3">
-                        <option ng-selected="vm.book.bookDetails.subject == subject.id"
+                    <select id="subject" ng-model="vm.bookDetails.subject" class="col-md-3">
+                        <option ng-selected="vm.bookDetails.subject == subject.id"
                                 ng-repeat="subject in vm.bookSubjects" ng-value="subject.id">{{subject.description}}
                         </option>
                     </select>
 
                     <label for="format" class="col-sm-1 control-label">Format<span
                             class="glyphicon-asterisk"></span></label>
-                    <select id="format" ng-model="vm.book.bookDetails.format" class="col-md-2" ng-required="true">
-                        <option ng-selected="vm.book.bookDetails.format == format.id"
+                    <select id="format" ng-model="vm.bookDetails.format" class="col-md-2" ng-required="true">
+                        <option ng-selected="vm.bookDetails.format == format.id"
                                 ng-repeat="format in vm.bookFormats" ng-value="format.id">{{format.description}}
                         </option>
                     </select>
 
                     <label for="language" class="col-sm-1 control-label">Language<span
                             class="glyphicon-asterisk"></span></label>
-                    <select id="language" ng-model="vm.book.bookDetails.language" class="col-md-2">
-                        <option ng-selected="vm.book.bookDetails.language == language.id"
+                    <select id="language" ng-model="vm.bookDetails.language" class="col-md-2">
+                        <option ng-selected="vm.bookDetails.language == language.id"
                                 ng-repeat="language in vm.bookLanguages" ng-value="language.id">{{language.description}}
                         </option>
                     </select>
                 </div>
+                <div class="row" style="padding-top: 2%">
+                    <label for="datepicker" class="col-sm-2 control-label">Publication Date<span
+                            class="glyphicon-asterisk"></span></label>
+
+                    <div class="input-group date col-md-2" data-provide="datepicker">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input id="datepicker"
+                               type="text" class="form-control"
+                               ng-selected="vm.bookDetails.publicationDate"
+                               data-date-format="mm/dd/yyyy">
+                    </div>
+                </div>
                 <hr>
                 <div class="row" style="padding-top: 2%">
                     <label for="summary" class="col-sm-1 control-label">Summary</label>
-                    <textarea id="summary" ng-model="vm.book.bookDetails.description"
+                    <textarea id="summary" ng-model="vm.bookDetails.description"
                               class="col-xs-5 textarea" rows="3"
                               placeholder="..."></textarea>
                 </div>
             </div>
             <div class="box-footer">
                 <div class="pull-right">
-                    <button ng-click="vm.save()" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Save
+                    <button ng-click="save()" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Save
                     </button>
                 </div>
             </div>
