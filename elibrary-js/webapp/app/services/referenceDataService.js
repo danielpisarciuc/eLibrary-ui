@@ -5,7 +5,6 @@
         .factory('referenceDataService', referenceDataService);
 
     function referenceDataService($q, $http) {
-
         var BASE_URL = 'http://localhost:9091/elibrary-ds';
 
         return {

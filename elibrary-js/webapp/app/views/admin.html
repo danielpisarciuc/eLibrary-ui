@@ -1,1 +1,20 @@
-Admin Page
+<section class="content-header">
+    <h1>eLibrary</h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref='admin'><i class="fa fa-dashboard active"></i>Home</a></li>
+    </ol>
+</section>
+
+<div class='container-fluid typeahead' ng-controller="SearchBookCtrl as vm">
+    <input type="text" ng-model="searchTerm" class="form-control"
+           placeholder="Search by isbn, title or author name..."
+           typeahead="book.title for book in vm.searchBook($viewValue) | limitTo:5"
+           typeahead-on-select='vm.viewBookDetails($item)'
+           typeahead-loading="loadingLocations"
+           typeahead-no-results="noResults"/>
+
+    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+    <div ng-show="noResults">
+        <i class="glyphicon glyphicon-remove"></i> No Results Found
+    </div>
+</div>

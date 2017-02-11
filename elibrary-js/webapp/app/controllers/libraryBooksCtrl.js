@@ -9,9 +9,8 @@
 
         vm.books = [];
 
-        $scope.editBook = function () {
-            bookService.getBookById($stateParams.bookId)
-                .then(bookFunction);
+        $scope.searchBook = function (searchTerm) {
+            return bookService.searchBook(searchTerm).then(bookFunction);
         };
 
         bookService.getAllBooks().then(bookFunction);
@@ -25,7 +24,7 @@
             }
         }
 
-        $scope.delete = function (id) {
+        vm.delete = function (id) {
             bookService.deleteBook(id)
                 .then(function (message) {
                     $log.warn(message);

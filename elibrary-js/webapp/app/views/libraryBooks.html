@@ -1,7 +1,7 @@
 <section class="content-header">
     <h1>
         eLibrary
-        <small>database content</small>
+        <small>display all books</small>
     </h1>
     <ol class="breadcrumb">
         <li><a ui-sref='admin'><i class="fa fa-dashboard"></i> Home</a></li>
@@ -29,9 +29,8 @@
                 <thead>
                 <tr>
                     <th>ISBN</th>
-                    <th>TITLE</th>
-                    <th>Author</th>
-                    <th></th>
+                    <th>Title</th>
+                    <th>Author Names</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -39,10 +38,18 @@
                 <tbody>
                 <tr data-ng-repeat="book in vm.books">
                     <td>{{book.isbn}}</td>
-                    <td><a ui-sref="bookInfo({id: book.bookId})">{{book.title}}</a></td>
-                    <td ng-repeat="author in book.bookAuthors">{{author.firstName + ' '+ author.lastName}}</td>
-                    <td><button ng-click="editBook(book.bookId)" class="btn btn-xs center-block btn-primary">Edit</button></td>
-                    <td><button ng-click="delete(book.bookId)" class="btn btn-xs btn-danger"><i class="fa fa-check-square-o"></i> Delete</button></td>
+                    <td><a ui-sref="bookDetails({id: book.id})">{{book.title}}</a></td>
+                    <td ng-repeat="author in book.bookAuthors">{{author.firstName + ' ' + author.lastName}}</td>
+                    <td>
+                        <button ui-sref="updateBook({id: book.id})" ng-click="vm.editBook(book.id)"
+                                class="btn btn-xs center-block btn-primary">Edit
+                        </button>
+                    </td>
+                    <td>
+                        <button ng-click="delete(book.id)" class="btn btn-xs btn-danger"><i
+                                class="fa fa-check-square-o"></i> Delete
+                        </button>
+                    </td>
                 </tr>
                 </tbody>
             </table>

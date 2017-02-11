@@ -1,11 +1,12 @@
 (function () {
     'use strict';
 
-    var app = angular.module('App', ['ngResource', 'ui.router']);
+    var app = angular.module('App', ['ngResource', 'ui.router', 'ui.bootstrap']);
 
     app.config(config);
 
     function config($stateProvider, $urlRouterProvider) {
+
         $urlRouterProvider.otherwise('/admin');
 
         $stateProvider
@@ -24,16 +25,22 @@
                 templateUrl: 'app/views/libraryBooks.html',
                 controller: 'LibraryBooksCtrl as vm'
             })
-            .state('bookInfo', {
+            .state('bookDetails', {
                 url: '/book/:id',
-                templateUrl: 'app/views/bookInfo.html',
-                controller: 'BookInfo as vm'
+                templateUrl: 'app/views/bookDetails.html',
+                controller: 'BookDetailsCtrl as vm'
             })
 
             .state('addBook', {
                 url: '/addBook',
                 templateUrl: 'app/views/addBook.html',
                 controller: 'AddBookCtrl as vm'
+            })
+
+            .state('updateBook', {
+                url: '/updateBook',
+                templateUrl: 'app/views/updateBook.html',
+                controller: 'UpdateBookCtrl as vm'
             });
     }
 

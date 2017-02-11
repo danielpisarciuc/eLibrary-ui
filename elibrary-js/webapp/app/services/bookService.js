@@ -54,9 +54,8 @@
                 .catch(sendGetError);
         }
 
-        //TODO size query param
         function searchBook(searchTerm) {
-            return $http.get(BASE_URL + '/search/' + searchTerm)
+            return $http.get(BASE_URL + '/book/search/' + searchTerm)
                 .then(sendGetData)
                 .catch(sendGetError);
         }
