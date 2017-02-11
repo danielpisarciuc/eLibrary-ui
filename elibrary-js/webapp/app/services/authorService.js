@@ -6,14 +6,14 @@
 
     function authorService($q, $http) {
 
-        var BASE_URL = 'http://localhost:9091/elibrary-ds'
+        var BASE_URL = 'http://localhost:9091/elibrary-ds';
 
         return {
             getAuthorBooks: getAuthorBooks
-        }
+        };
 
         function getAuthorBooks(authorName) {
-            return $http.get(BASE_URL + '/book/author-books/?authorName=' + authorName)
+            return $http.get(BASE_URL + '/book/author-books?authorName=' + authorName)
                 .then(sendGetData)
                 .catch(sendGetError);
         }

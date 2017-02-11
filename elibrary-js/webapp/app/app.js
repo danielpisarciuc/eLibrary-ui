@@ -16,7 +16,7 @@
                 controller: 'AdminCtrl as vm'
             })
             .state('authorBooks', {
-                url: '/authorBooks',
+                url: '/authorBooks?authorName',
                 templateUrl: 'app/views/authorBooks.html',
                 controller: 'AuthorCtrl as vm'
             })

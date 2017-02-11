@@ -4,22 +4,12 @@
     angular.module('App')
         .controller('AuthorCtrl', AuthorCtrl);
 
-    function AuthorCtrl(authorService) {
-        var vm = this;
+    function AuthorCtrl($scope, $stateParams, authorService) {
 
-        vm.authorBooks = [];
+        authorService.getAuthorBooks($stateParams.authorName).then(function resolve(books) {
+            $scope.authorBooks = books;
+        });
 
-        var authorName = "Leo Alex";
-        authorService.getAuthorBooks(authorName)
-            .then(authorFunction);
-
-        function authorFunction(authorBooks) {
-            if (angular.isArray(authorBooks)) {
-                vm.authorBooks = authorBooks;
-            } else {
-                vm.authorBooks = [authorBooks];
-            }
-        }
     }
 
 }());

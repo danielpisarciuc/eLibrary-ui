@@ -16,7 +16,7 @@
             getAllBooks: getAllBooks,
             getBookDetails: getBookDetails,
             searchBook: searchBook
-        }
+        };
 
         function createBook(book) {
             return $http.post(BASE_URL + '/book/create', book)

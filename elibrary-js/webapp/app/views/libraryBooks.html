@@ -22,37 +22,41 @@
             </div>
         </form>
     </div>
-
     <div class="row">
-        <div class="box-body">
-            <table id="libraryBooks" class="table table-bordered table-hover dataTable" role="grid">
-                <thead>
-                <tr>
-                    <th>ISBN</th>
-                    <th>Title</th>
-                    <th>Author Names</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr data-ng-repeat="book in vm.books">
-                    <td>{{book.isbn}}</td>
-                    <td><a ui-sref="bookDetails({id: book.id})">{{book.title}}</a></td>
-                    <td ng-repeat="author in book.bookAuthors">{{author.firstName + ' ' + author.lastName}}</td>
-                    <td>
-                        <button ui-sref="updateBook({id: book.id})" ng-click="vm.editBook(book.id)"
-                                class="btn btn-xs center-block btn-primary">Edit
-                        </button>
-                    </td>
-                    <td>
-                        <button ng-click="delete(book.id)" class="btn btn-xs btn-danger"><i
-                                class="fa fa-check-square-o"></i> Delete
-                        </button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <table id="libraryBooks" class="table table-bordered table-hover dataTable" role="grid">
+            <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Author Names</th>
+                <th></th>
+            </tr>
+            <tr>
+
+            </tr>
+            </thead>
+            <tbody data-ng-repeat="book in libraryBooks">
+            <tr>
+                <td><a ui-sref="bookDetails({id: book.id})">{{book.isbn}}</a></td>
+                <td>{{book.title}}</td>
+                <td data-ng-repeat="author in book.bookAuthors"><a ui-sref="authorBooks({authorName: author.firstName + ' ' + author.lastName})">
+                    {{author.firstName + ' ' + author.lastName}}</a>
+                </td>
+                <td>
+                <button ui-sref="updateBook({id: book.id})" class="btn btn-xs center-block btn-primary"
+                            ng-click="vm.editBook(book.id)"
+                            data-toggle="confirmation" data-popout="true">
+                        <i class="fa fa-check-square-o"></i> Edit
+                    </button>
+                </td>
+                <td>
+                    <button ng-click="vm.delete(book.id)" class="btn btn-xs center-block btn-danger">
+                        <i class="fa fa-check-square-o"></i> Delete
+                    </button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
     </div>
 </section>

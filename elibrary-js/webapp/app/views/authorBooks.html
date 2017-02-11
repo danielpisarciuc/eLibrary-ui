@@ -1,16 +1,40 @@
+<section class="content-header">
+    <h1>Author books based on author name</h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref='admin'><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a ui-sref='libraryBooks'>View Books</a></li>
+        <li class="active">Author Books</li>
+    </ol>
+</section>
+
 <section class="content">
-    <table class="table">
-        <tbody>
+    <table id="authorBooks" class="table table-bordered table-hover dataTable" role="grid">
+        <thead>
         <tr>
-            <th style="width: 20px">BOOK ID</th>
-            <th style="width: 50px">ISBN</th>
-            <th style="width: 50px">TITLE</th>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th></th>
+            <th></th>
         </tr>
-        <tr data-ng-repeat="authorBook in vm.authorBooks">
-            <td>{{authorBook.bookId}}</td>
+        </thead>
+        <tbody>
+        <tr data-ng-repeat="authorBook in authorBooks">
             <td>{{authorBook.isbn}}</td>
             <td>{{authorBook.title}}</td>
+            <td>
+                <button ui-sref="updateBook({id: book.id})" class="btn btn-xs center-block btn-primary"
+                        ng-click="vm.editBook(book.id)"
+                        data-toggle="confirmation" data-popout="true">
+                    <i class="fa fa-check-square-o"></i> Edit
+                </button>
+            </td>
+            <td>
+                <button ng-click="vm.delete(book.id)" class="btn btn-xs center-block btn-danger">
+                    <i class="fa fa-check-square-o"></i> Delete
+                </button>
+            </td>
         </tr>
         </tbody>
     </table>
+</section>
 </section>

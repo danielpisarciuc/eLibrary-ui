@@ -4,33 +4,18 @@
     angular.module('App')
         .controller('LibraryBooksCtrl', LibraryBooksCtrl);
 
-    function LibraryBooksCtrl($scope, $state, $log, $stateParams, bookService) {
+    function LibraryBooksCtrl($scope, $state,bookService) {
         var vm = this;
 
-        vm.books = [];
+        bookService.getAllBooks().then(function resolve(books) {
+            $scope.libraryBooks = books;
+        });
 
-        $scope.searchBook = function (searchTerm) {
-            return bookService.searchBook(searchTerm).then(bookFunction);
-        };
-
-        bookService.getAllBooks().then(bookFunction);
-
-        function bookFunction(books) {
-            if (angular.isArray(books)) {
-                vm.books = books;
-
-            } else {
-                vm.books = [books];
-            }
-        }
-
-        vm.delete = function (id) {
-            bookService.deleteBook(id)
-                .then(function (message) {
-                    $log.warn(message);
+        vm.delete = function (bookId) {
+            bookService.deleteBook(bookId)
+                .then(function () {
                     $state.go('libraryBooks', {}, {reload: true});
                 })
-
-        }
+        };
     }
 }());
