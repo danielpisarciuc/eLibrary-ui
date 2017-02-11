@@ -10,53 +10,60 @@
 </section>
 
 <section class="content">
-    <div class="row">
-        <!-- TODO search book -->
-        <form class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search by isbn, title or author name...">
-                <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-                </span>
-            </div>
-        </form>
+    <div class="row" style="padding-top: 2%">
+        <input type="text" ng-model="filterTerm" class="form-control"
+               placeholder="Search by isbn, title or author name..."/>
     </div>
-    <div class="row">
-        <table id="libraryBooks" class="table table-bordered table-hover dataTable" role="grid">
+    <br/>
+    <div class="row" style="padding-top: 2%">
+        <label for="numPerPage" >Show </label>
+        <select id="numPerPage" ng-model="numPerPage">
+            <option ng-selected="10" ng-value="10">10</option>
+            <option ng-value="25">25</option>
+            <option ng-value="50">50</option>
+            <option ng-value="100">100</option>
+        </select>
+        <label> entries</label>
+    </div>
+
+    <div class="row" style="padding-top: 1%">
+        <table id="libraryBooksTable" class="display table table-bordered table-hover dataTable" cellspacing="0"
+               width="100%">
             <thead>
             <tr>
                 <th>ISBN</th>
                 <th>Title</th>
                 <th>Author Names</th>
                 <th></th>
-            </tr>
-            <tr>
-
+                <th></th>
             </tr>
             </thead>
-            <tbody data-ng-repeat="book in libraryBooks">
-            <tr>
-                <td><a ui-sref="bookDetails({id: book.id})">{{book.isbn}}</a></td>
-                <td>{{book.title}}</td>
-                <td data-ng-repeat="author in book.bookAuthors"><a ui-sref="authorBooks({authorName: author.firstName + ' ' + author.lastName})">
+            <tbody>
+            <tr data-ng-repeat="book in libraryBooks | orderBy:sortType:sortReverse | filter:filterTerm | filter:paginate | limitTo: numPerPage">
+                <td class="col-md-3"><a ui-sref="bookDetails({id: book.id})">{{book.isbn}}</a></td>
+                <td class="col-md-3">{{book.title}}</td>
+                <td class="col-md-3" data-ng-repeat="author in book.bookAuthors"><a
+                        ui-sref="authorBooks({authorName: author.firstName + ' ' + author.lastName})">
                     {{author.firstName + ' ' + author.lastName}}</a>
                 </td>
-                <td>
-                <button ui-sref="updateBook({id: book.id})" class="btn btn-xs center-block btn-primary"
+                <td class="col-md-1">
+                    <button ui-sref="updateBook({id: book.id})" class="btn btn-xs center-block btn-primary"
                             ng-click="vm.editBook(book.id)"
-                            data-toggle="confirmation" data-popout="true">
+                            data-toggle="confirmation" data-popout="true" >
                         <i class="fa fa-check-square-o"></i> Edit
                     </button>
                 </td>
-                <td>
-                    <button ng-click="vm.delete(book.id)" class="btn btn-xs center-block btn-danger">
+                <td class="col-md-1">
+                    <button class="btn btn-xs center-block btn-danger" ng-click="vm.delete(book.id)">
                         <i class="fa fa-check-square-o"></i> Delete
                     </button>
                 </td>
             </tr>
-
             </tbody>
         </table>
+        <pagination total-items="libraryBooks.length" ng-model="currentPage"
+                    max-size="5" boundary-links="true"
+                    items-per-page="numPerPage" class="paginatio text-center pull-right">
+        </pagination>
     </div>
 </section>
