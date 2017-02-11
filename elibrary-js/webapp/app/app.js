@@ -6,14 +6,13 @@
     app.config(config);
 
     function config($stateProvider, $urlRouterProvider) {
-
-        $urlRouterProvider.otherwise('/admin');
+        $urlRouterProvider.otherwise('/welcome');
 
         $stateProvider
-            .state('admin', {
-                url: '/admin',
-                templateUrl: 'app/views/admin.html',
-                controller: 'AdminCtrl as vm'
+            .state('welcome', {
+                url: '/welcome',
+                templateUrl: 'app/views/welcome.html',
+                controller: 'WelcomePageCtrl as vm'
             })
             .state('authorBooks', {
                 url: '/authorBooks?authorName',
