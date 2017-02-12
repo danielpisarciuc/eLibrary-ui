@@ -7,68 +7,57 @@
     function AddBookCtrl($scope, $state, $log, bookService, referenceDataService) {
         var vm = this;
 
-        vm.bookFormats = {};
-        vm.bookLanguages = {};
-        vm.bookSubjects = {};
+        $scope.book = {};
+
         var BOOK_FORMAT = 'BOOK_FORMAT';
         var BOOK_LANGUAGE = 'BOOK_LANGUAGE';
         var BOOK_SUBJECT = 'BOOK_SUBJECT';
 
-        referenceDataService.bookFormat(BOOK_SUBJECT)
-            .then(bookSubjects);
-
-        function bookSubjects(bookSubjects) {
-            if (angular.isArray(bookSubjects)) {
-                vm.bookSubjects = bookSubjects;
-
-            } else {
-                vm.bookSubjects = [bookSubjects];
-            }
-        }
-
-        referenceDataService.bookFormat(BOOK_LANGUAGE)
-            .then(bookLanguages);
-
-        function bookLanguages(bookLanguages) {
-            if (angular.isArray(bookLanguages)) {
-                vm.bookLanguages = bookLanguages;
-
-            } else {
-                vm.bookLanguages = [bookLanguages];
-            }
-        }
-
         referenceDataService.bookFormat(BOOK_FORMAT)
-            .then(bookFormats);
+            .then(function bookFormats(bookFormats) {
+                $scope.bookFormats = bookFormats;
+            });
 
-        function bookFormats(bookFormats) {
-            if (angular.isArray(bookFormats)) {
-                vm.bookFormats = bookFormats;
+        referenceDataService.bookLanguage(BOOK_LANGUAGE)
+            .then(function bookLanguages(bookLanguages) {
+                $scope.bookLanguages = bookLanguages;
+            });
 
-            } else {
-                vm.bookFormats = [bookFormats];
-            }
-        }
+        referenceDataService.bookSubject(BOOK_SUBJECT)
+            .then(function bookSubject(bookSubjects) {
+                $scope.bookSubjects = bookSubjects;
+            });
 
-        $scope.save = function () {
+        vm.addLanguage = function (language) {
+            $scope.book.language = language.id;
+        };
 
+        vm.addFormat = function (format) {
+            $scope.book.format = format.id;
+        };
+
+        vm.addSubject = function (subject) {
+            $scope.book.subject = subject.id;
+        };
+
+        vm.save = function () {
 
             var data = {
-                "isbn": vm.book.isbn,
-                "title": vm.book.title,
+                "isbn": $scope.book.isbn,
+                "title": $scope.book.title,
                 "bookAuthors": [
                     {
-                        "firstName": vm.bookAuthors ? vm.bookAuthors.firstName : null,
-                        "lastName": vm.bookAuthors ? vm.bookAuthors.lastName : null
+                        "firstName": $scope.book.firstName,
+                        "lastName": $scope.book.lastName
                     }
                 ],
                 "bookDetails": [
                     {
-                        "language": vm.bookDetails.language,
-                        "format": vm.bookDetails.format,
-                        "subject": vm.bookDetails.subject,
-                        "publicationDate": vm.bookDetails.publicationDate,
-                        "description": vm.bookDetails.description
+                        "language": $scope.book.language,
+                        "format": $scope.book.format,
+                        "subject": $scope.book.subject,
+                        "publicationDate": $scope.book.publicationDate,
+                        "description": $scope.book.description
                     }
                 ]
             };

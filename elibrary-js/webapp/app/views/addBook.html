@@ -21,8 +21,8 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><input type="text" class="form-control" placeholder="..."/></td>
-                    <td><input type="text" class="form-control" placeholder="..."/></td>
+                    <td><input type="text" class="form-control" ng-model="book.isbn" placeholder="..."/></td>
+                    <td><input type="text" class="form-control" ng-model="book.title" placeholder="..."/></td>
                 </tr>
                 </tbody>
             </table>
@@ -37,8 +37,22 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><input type="text" class="form-control" placeholder="..."/></td>
-                    <td><input type="text" class="form-control" placeholder="..."/></td>
+                    <td>
+                        <input type="text" ng-model="searchLanguage" class="form-control"
+                               placeholder="..."
+                               typeahead="language.description for language in bookLanguages | limitTo:5"
+                               typeahead-on-select='vm.addLanguage($item)'
+                               typeahead-loading="loadingLocations"
+                               typeahead-no-results="noResults"/>
+                    </td>
+                    <td>
+                        <input type="text" ng-model="searchFormat" class="form-control"
+                               placeholder="..."
+                               typeahead="format.description for format in bookFormats | limitTo:5"
+                               typeahead-on-select='vm.addFormat($item)'
+                               typeahead-loading="loadingLocations"
+                               typeahead-no-results="noResults"/>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -53,8 +67,18 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><input type="text" class="form-control" placeholder="..."/></td>
-                    <td><input type="text" class="form-control" placeholder="..."/></td>
+                    <td>
+                        <input type="text" ng-model="searchSubject" class="form-control"
+                               placeholder="..."
+                               typeahead="subject.description for subject in bookSubjects | limitTo:5"
+                               typeahead-on-select='vm.addSubject($item)'
+                               typeahead-loading="loadingLocations"
+                               typeahead-no-results="noResults"/>
+                    </td>
+                    <td>
+                        <input id="publicationDate" type="date" name="publicationDate" ng-model="book.publicationDate"
+                               min="1800-01-01"  class="form-control"/>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -68,7 +92,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><textarea class="textarea col-sm-8" id="summary" rows="5" placeholder="..."></textarea></td>
+                    <td><textarea ng-model="book.description" class="textarea col-sm-8" id="summary" rows="5" placeholder="..."></textarea></td>
                 </tr>
                 </tbody>
             </table>
@@ -85,8 +109,8 @@
                 </thead>
                 <tbody>
                 <tr data-ng-repeat="row in rows track by $index">
-                    <td><input ng-model="firstName" type="text" class="form-control" placeholder="..."/></td>
-                    <td><input ng-model="lastName" type="text" class="form-control" placeholder="..."/></td>
+                    <td><input ng-model="book.firstName" type="text" class="form-control" placeholder="..."/></td>
+                    <td><input ng-model="book.lastName" type="text" class="form-control" placeholder="..."/></td>
                     <td>
                         <button ng-click="vm.addRow()" class="btn btn-success btn-xs" datatype="plus">
                             <span class="glyphicon glyphicon-plus"></span>
@@ -103,7 +127,8 @@
             </table>
         </div>
         <div class="col-md-10" style="padding-top: 2%;">
-            <button ng-click="vm.save()" class="btn btn-primary btn-block"><i class="fa fa-check-square-o"></i> Save</button>
+            <button ng-click="vm.save()" class="btn btn-primary btn-block"><i class="fa fa-check-square-o"></i> Save
+            </button>
         </div>
     </div>
 </section>

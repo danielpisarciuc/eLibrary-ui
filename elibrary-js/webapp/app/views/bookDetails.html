@@ -8,29 +8,86 @@
         <li class="active">Book Details</li>
     </ol>
 </section>
-<div class="row col-md-9" style="padding-top: 10%; padding-left: 10%">
-    <div class="text-center">
-        <h3 class="text-danger">{{bookDetails.title}} </h3>
-    </div>
-
-    <div class="body pull-right">
-        <div class="row" data-ng-repeat="detail in bookDetails.bookDetails">
-            <ul class="borders">
-                <li><h4>Language: {{detail.language}}</h4></li>
-                <li><h4>Format: {{detail.format}}</h4></li>
-                <li><h4>Subject: {{detail.subject}}</h4></li>
-                <li><h4>PublicationDate: {{detail.publicationDate}}</h4></li>
-                <li><h4>Description: {{detail.description}}</h4></li>
-            </ul>
+<section class="content">
+    <div class="row">
+        <div class="row col-md-10" style="padding-top: 5%;">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="col-sm-4"><span class="glyphicon-align-center"></span> ISBN</th>
+                    <th class="col-sm-8"><span class="glyphicon-align-center"></span> Title</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><p class="text-danger">{{bookDetails.isbn}}</p></td>
+                    <td><p class="text-danger">{{bookDetails.title}} </p></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row col-md-10">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="col-sm-4"><span class="glyphicon-align-center"></span> Language/s</th>
+                    <th class="col-sm-8"><span class="glyphicon-align-center"></span> Format/s</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="detail in bookDetails.bookDetails">
+                    <td><p>{{detail.language}}</p></td>
+                    <td><p>{{detail.format}}</p></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row col-md-10">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="col-sm-8"><span class="glyphicon-asterisk"></span> Subject/s</th>
+                    <th class="col-sm-4"><span class="glyphicon-asterisk"></span> Publication Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="detail in bookDetails.bookDetails">
+                    <td><p>{{detail.subject}}</p></td>
+                    <td><p>{{detail.publicationDate}}</p></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row col-md-10">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th><span class="glyphicon-asterisk"></span> Book short description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="detail in bookDetails.bookDetails">
+                    <td><p>{{detail.description}}</p></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row col-md-10">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="col-sm-6"><span class="glyphicon-asterisk"></span> Author First Name</th>
+                    <th class="col-sm-6"><span class="glyphicon-asterisk"></span> Author Last Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="author in bookDetails.bookAuthors">
+                   <td>{{author.firstName}}</td>
+                   <td>{{author.lastName}}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-
-    <div class="footer">
-        <h4 class="pull-left text-primary">ISBN: {{bookDetails.isbn}}</h4>
-        <h4 class="text-danger pull-right">
-            <div class="row" data-ng-repeat="author in bookDetails.bookAuthors">
-                {{author.firstName + ' ' + author.lastName}}
-            </div>
-        </h4>
     </div>
-</div>
+</section>
