@@ -1,8 +1,36 @@
 <section class="content-header">
-    <h1>Book Details</h1>
+    <h1>eLibrary
+        <small>display book information's</small>
+    </h1>
     <ol class="breadcrumb">
         <li><a ui-sref='welcome'><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a ui-sref='libraryBooks'>View Books</a></li>
         <li class="active">Book Details</li>
     </ol>
 </section>
+<div class="row col-md-9" style="padding-top: 10%; padding-left: 10%">
+    <div class="text-center">
+        <h3 class="text-danger">{{bookDetails.title}} </h3>
+    </div>
+
+    <div class="body pull-right">
+        <div class="row" data-ng-repeat="detail in bookDetails.bookDetails">
+            <ul class="borders">
+                <li><h4>Language: {{detail.language}}</h4></li>
+                <li><h4>Format: {{detail.format}}</h4></li>
+                <li><h4>Subject: {{detail.subject}}</h4></li>
+                <li><h4>PublicationDate: {{detail.publicationDate}}</h4></li>
+                <li><h4>Description: {{detail.description}}</h4></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h4 class="pull-left text-primary">ISBN: {{bookDetails.isbn}}</h4>
+        <h4 class="text-danger pull-right">
+            <div class="row" data-ng-repeat="author in bookDetails.bookAuthors">
+                {{author.firstName + ' ' + author.lastName}}
+            </div>
+        </h4>
+    </div>
+</div>
