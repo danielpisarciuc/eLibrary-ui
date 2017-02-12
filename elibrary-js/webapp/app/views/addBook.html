@@ -109,8 +109,8 @@
                 </thead>
                 <tbody>
                 <tr data-ng-repeat="row in rows track by $index">
-                    <td><input ng-model="book.firstName" type="text" class="form-control" placeholder="..."/></td>
-                    <td><input ng-model="book.lastName" type="text" class="form-control" placeholder="..."/></td>
+                    <td><input ng-model="bookAuthors[$index].firstName" type="text" class="form-control" placeholder="..."/></td>
+                    <td><input ng-model="bookAuthors[$index].lastName" type="text" class="form-control" placeholder="..."/></td>
                     <td>
                         <button ng-click="vm.addRow()" class="btn btn-success btn-xs" datatype="plus">
                             <span class="glyphicon glyphicon-plus"></span>

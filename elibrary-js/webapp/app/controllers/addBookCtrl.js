@@ -8,6 +8,7 @@
         var vm = this;
 
         $scope.book = {};
+        $scope.bookAuthors = [];
 
         var BOOK_FORMAT = 'BOOK_FORMAT';
         var BOOK_LANGUAGE = 'BOOK_LANGUAGE';
@@ -45,12 +46,7 @@
             var data = {
                 "isbn": $scope.book.isbn,
                 "title": $scope.book.title,
-                "bookAuthors": [
-                    {
-                        "firstName": $scope.book.firstName,
-                        "lastName": $scope.book.lastName
-                    }
-                ],
+                "bookAuthors": $scope.bookAuthors,
                 "bookDetails": [
                     {
                         "language": $scope.book.language,
