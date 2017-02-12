@@ -86,5 +86,18 @@
             $log.info(msg);
             $state.go('libraryBooks', {}, {reload: true});
         }
+
+        $scope.rows = ['Default row'];
+        $scope.counter = 1;
+
+        vm.addRow = function () {
+            $scope.rows.push($scope.counter);
+            $scope.counter++;
+        };
+
+        vm.removeRow = function ($index) {
+            $scope.rows.splice($index, 1);
+            $scope.counter--;
+        }
     }
 }());

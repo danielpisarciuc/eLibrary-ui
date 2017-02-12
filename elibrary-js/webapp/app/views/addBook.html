@@ -1,5 +1,7 @@
 <section class="content-header">
-    <h1>Add a new book in the system</h1>
+    <h1>eLibrary
+        <small>add new book in the system</small>
+    </h1>
     <ol class="breadcrumb">
         <li><a ui-sref='welcome'><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a ui-sref='libraryBooks'>View Books</a></li>
@@ -8,87 +10,100 @@
 </section>
 
 <section class="content">
-    <form role="form">
-        <div class="box box-default">
-            <div class="box-header with-border">
-                <h3 class="box-title">Please fill in required fileds marked with <strong><span
-                        class="glyphicon-asterisk"></span></strong></h3>
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="box-body">
-                <div class="row" style="padding-top: 2%">
-                    <label for="isbn" class="col-sm-1 control-label">ISBN<span
-                            class="glyphicon-asterisk"></span></label>
-                    <input id="isbn"
-                           class="col-md-3"
-                           ng-model="vm.book.isbn"
-                           type="text" name="isbn"
-                           ng-required="true">
-
-                    <label for="title" class="col-sm-1 control-label">Title<span
-                            class="glyphicon-asterisk"></span></label>
-                    <input id="title"
-                           class="col-md-5"
-                           ng-model="vm.book.title"
-                           type="text" name="title"
-                           ng-required="true">
-                </div>
-                <div class="row" style="padding-top: 2%">
-                    <label for="subject" class="col-sm-1 control-label">Subject<span
-                            class="glyphicon-asterisk"></span></label>
-                    <select id="subject" ng-model="vm.bookDetails.subject" class="col-md-3">
-                        <option ng-selected="vm.bookDetails.subject == subject.id"
-                                ng-repeat="subject in vm.bookSubjects" ng-value="subject.id">{{subject.description}}
-                        </option>
-                    </select>
-
-                    <label for="format" class="col-sm-1 control-label">Format<span
-                            class="glyphicon-asterisk"></span></label>
-                    <select id="format" ng-model="vm.bookDetails.format" class="col-md-2" ng-required="true">
-                        <option ng-selected="vm.bookDetails.format == format.id"
-                                ng-repeat="format in vm.bookFormats" ng-value="format.id">{{format.description}}
-                        </option>
-                    </select>
-
-                    <label for="language" class="col-sm-1 control-label">Language<span
-                            class="glyphicon-asterisk"></span></label>
-                    <select id="language" ng-model="vm.bookDetails.language" class="col-md-2">
-                        <option ng-selected="vm.bookDetails.language == language.id"
-                                ng-repeat="language in vm.bookLanguages" ng-value="language.id">{{language.description}}
-                        </option>
-                    </select>
-                </div>
-                <div class="row" style="padding-top: 2%">
-                    <label for="datepicker" class="col-sm-2 control-label">Publication Date<span
-                            class="glyphicon-asterisk"></span></label>
-
-                    <div class="input-group date col-md-2" data-provide="datepicker">
-                        <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-                        <input id="datepicker"
-                               type="text" class="form-control"
-                               ng-selected="vm.bookDetails.publicationDate"
-                               data-date-format="mm/dd/yyyy">
-                    </div>
-                </div>
-                <hr>
-                <div class="row" style="padding-top: 2%">
-                    <label for="summary" class="col-sm-1 control-label">Summary</label>
-                    <textarea id="summary" ng-model="vm.bookDetails.description"
-                              class="col-xs-5 textarea" rows="3"
-                              placeholder="..."></textarea>
-                </div>
-            </div>
-            <div class="box-footer">
-                <div class="pull-right">
-                    <button ng-click="save()" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Save
-                    </button>
-                </div>
-            </div>
+    <div class="row">
+        <div class="row col-md-10" style="padding-top: 5%;">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="col-sm-4"><span class="glyphicon-asterisk"></span> ISBN</th>
+                    <th class="col-sm-8"><span class="glyphicon-asterisk"></span> Title</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="..."/></td>
+                    <td><input type="text" class="form-control" placeholder="..."/></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-    </form>
+        <div class="row col-md-10">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="col-sm-4"><span class="glyphicon-asterisk"></span> Language/s</th>
+                    <th class="col-sm-8"><span class="glyphicon-asterisk"></span> Format/s</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="..."/></td>
+                    <td><input type="text" class="form-control" placeholder="..."/></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row col-md-10">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="col-sm-8"><span class="glyphicon-asterisk"></span> Subject/s</th>
+                    <th class="col-sm-4"><span class="glyphicon-asterisk"></span> Publication Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input type="text" class="form-control" placeholder="..."/></td>
+                    <td><input type="text" class="form-control" placeholder="..."/></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row col-md-10">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th><span class="glyphicon-asterisk"></span> Book short description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><textarea class="textarea col-sm-8" id="summary" rows="5" placeholder="..."></textarea></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row col-md-10">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="col-sm-6"><span class="glyphicon-asterisk"></span> Author First Name</th>
+                    <th class="col-sm-6"><span class="glyphicon-asterisk"></span> Author Last Name</th>
+                    <th class="col-sm-1"></th>
+                    <th class="col-sm-1"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="row in rows track by $index">
+                    <td><input ng-model="firstName" type="text" class="form-control" placeholder="..."/></td>
+                    <td><input ng-model="lastName" type="text" class="form-control" placeholder="..."/></td>
+                    <td>
+                        <button ng-click="vm.addRow()" class="btn btn-success btn-xs" datatype="plus">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </td>
+                    <td>
+                        <button ng-show="$index > 0" ng-click="vm.removeRow($index)" datatype="minus"
+                                class="btn btn-danger  btn-xs">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-10" style="padding-top: 2%;">
+            <button ng-click="vm.save()" class="btn btn-primary btn-block"><i class="fa fa-check-square-o"></i> Save</button>
+        </div>
+    </div>
 </section>
