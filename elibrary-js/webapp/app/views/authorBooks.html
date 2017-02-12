@@ -8,33 +8,50 @@
 </section>
 
 <section class="content">
-    <table id="authorBooks" class="table table-bordered table-hover dataTable" role="grid">
-        <thead>
-        <tr>
-            <th>ISBN</th>
-            <th>Title</th>
-            <th></th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr data-ng-repeat="authorBook in authorBooks">
-            <td>{{authorBook.isbn}}</td>
-            <td>{{authorBook.title}}</td>
-            <td>
-                <button ui-sref="updateBook({id: book.id})" class="btn btn-xs center-block btn-primary"
-                        ng-click="vm.editBook(book.id)"
-                        data-toggle="confirmation" data-popout="true">
-                    <i class="fa fa-check-square-o"></i> Edit
-                </button>
-            </td>
-            <td>
-                <button ng-click="vm.delete(book.id)" class="btn btn-xs center-block btn-danger">
-                    <i class="fa fa-check-square-o"></i> Delete
-                </button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="row" style="padding-top: 2%">
+        <label for="numPerPage" >Show </label>
+        <select id="numPerPage" ng-model="numPerPage">
+            <option ng-selected="10" ng-value="10">10</option>
+            <option ng-value="25">25</option>
+            <option ng-value="50">50</option>
+            <option ng-value="100">100</option>
+        </select>
+        <label> entries</label>
+    </div>
+
+    <div class="row" style="padding-top: 1%">
+        <table id="authorBooks" class="table table-bordered table-hover dataTable" role="grid">
+            <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-ng-repeat="authorBook in authorBooks | filter:filterTerm | filter:paginate | limitTo: numPerPage">
+                <td>{{authorBook.isbn}}</td>
+                <td>{{authorBook.title}}</td>
+                <td>
+                    <button ui-sref="updateBook({id: book.id})" class="btn btn-xs center-block btn-primary"
+                            ng-click="vm.editBook(book.id)"
+                            data-toggle="confirmation" data-popout="true">
+                        <i class="fa fa-check-square-o"></i> Edit
+                    </button>
+                </td>
+                <td>
+                    <button ng-click="vm.delete(authorBook.id)" class="btn btn-xs center-block btn-danger">
+                        <i class="fa fa-check-square-o"></i> Delete
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <pagination total-items="authorBooks.length" ng-model="currentPage"
+                    max-size="5" boundary-links="true"
+                    items-per-page="numPerPage" class="paginatio text-center pull-right">
+        </pagination>
+    </div>
 </section>
 </section>

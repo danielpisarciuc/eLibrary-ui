@@ -6,8 +6,6 @@
 
     function LibraryBooksCtrl($scope, $state, bookService) {
         var vm = this;
-        $scope.sortType = 'isbn';
-        $scope.sortReverse = false;
         $scope.filterTerm = '';
         $scope.numPerPage = 10;
         $scope.currentPage = 1;

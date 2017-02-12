@@ -9,7 +9,7 @@
 </section>
 
 <section class="content">
-    <div class="row" ng-controller="WelcomePageCtrl as vm">
+    <div class="row" style="padding-top: 1%" ng-controller="WelcomePageCtrl as vm">
         <input type="text" ng-model="searchTerm" class="form-control"
                placeholder="Search by isbn, title or author name..."
                typeahead="book.title for book in vm.searchBook($viewValue) | limitTo:5"
