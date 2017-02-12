@@ -31,7 +31,7 @@
             </thead>
             <tbody>
             <tr data-ng-repeat="authorBook in authorBooks | filter:filterTerm | filter:paginate | limitTo: numPerPage">
-                <td>{{authorBook.isbn}}</td>
+                <td><a ui-sref="bookDetails({id: authorBook.id})">{{authorBook.isbn}}</a></td>
                 <td>{{authorBook.title}}</td>
                 <td>
                     <button ui-sref="updateBook({id: book.id})" class="btn btn-xs center-block btn-primary"

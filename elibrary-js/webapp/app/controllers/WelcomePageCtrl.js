@@ -25,10 +25,7 @@
             if (!$item) {
                 return;
             }
-
-            var bookId = $item.id;
-
-            return $state.go('bookDetails', bookId);
+            return $state.go('bookDetails',{id: $item.id});
         }
     }
 }());
