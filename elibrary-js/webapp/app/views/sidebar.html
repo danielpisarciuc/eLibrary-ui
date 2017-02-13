@@ -12,12 +12,12 @@
 
         <ul class="sidebar-menu">
             <li class="header"></li>
-            <li ng-class="{'active' : vm.isActive('/welcome')}"><a ui-sref='welcome'><i class="fa fa-spinner"></i>
+            <li ng-class="{'active' : vm.isActive('/welcome')}"><a id="welcome" ui-sref='welcome'><i class="fa fa-spinner"></i>
                 <span>Home</span></a></li>
-            <li ng-class="{'active' : vm.isActive('/libraryBooks')}"><a ui-sref='libraryBooks'><i
+            <li ng-class="{'active' : vm.isActive('/libraryBooks')}"><a id="libraryBooks" ui-sref='libraryBooks'><i
                     class="fa fa-spinner"></i> <span>View Books</span></a>
             </li>
-            <li ng-class="{'active' : vm.isActive('/addBook')}"><a ui-sref='addBook'><i class="fa fa-spinner"></i>
+            <li ng-class="{'active' : vm.isActive('/addBook')}"><a id="addBook" ui-sref='addBook'><i class="fa fa-spinner"></i>
                 <span>Add Book</span></a>
             </li>
         </ul>

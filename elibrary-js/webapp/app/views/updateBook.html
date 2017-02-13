@@ -1,8 +1,133 @@
 <section class="content-header">
-    <h1>Update Book</h1>
+    <h1>eLibrary
+        <small> update book information's</small></h1>
     <ol class="breadcrumb">
         <li><a ui-sref='welcome'><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a ui-sref='libraryBooks'>View Books</a></li>
         <li class="active">Update Book</li>
     </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="row col-md-10" style="padding-top: 5%;">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="col-sm-4"><span class="glyphicon-asterisk"></span> ISBN</th>
+                    <th class="col-sm-8"><span class="glyphicon-asterisk"></span> Title</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input type="text" class="form-control" ng-model="book.isbn" placeholder="..."/></td>
+                    <td><input type="text" class="form-control" ng-model="book.title" placeholder="..."/></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row col-md-10">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="col-sm-4"><span class="glyphicon-asterisk"></span> Language/s</th>
+                    <th class="col-sm-8"><span class="glyphicon-asterisk"></span> Format/s</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <input type="text" ng-model="book.language" class="form-control"
+                               placeholder="..."
+                               typeahead="language.description for language in bookLanguages | limitTo:5"
+                               typeahead-on-select='vm.addLanguage($item)'
+                               typeahead-loading="loadingLocations"
+                               typeahead-no-results="noResults"/>
+                    </td>
+                    <td>
+                        <input type="text" ng-model="searchFormat" class="form-control"
+                               placeholder="..."
+                               typeahead="format.description for format in bookFormats | limitTo:5"
+                               typeahead-on-select='vm.addFormat($item)'
+                               typeahead-loading="loadingLocations"
+                               typeahead-no-results="noResults"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row col-md-10">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="col-sm-8"><span class="glyphicon-asterisk"></span> Subject/s</th>
+                    <th class="col-sm-4"><span class="glyphicon-asterisk"></span> Publication Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <input type="text" ng-model="searchSubject" class="form-control"
+                               placeholder="..."
+                               typeahead="subject.description for subject in bookSubjects | limitTo:5"
+                               typeahead-on-select='vm.addSubject($item)'
+                               typeahead-loading="loadingLocations"
+                               typeahead-no-results="noResults"/>
+                    </td>
+                    <td>
+                        <input id="publicationDate" type="date" name="publicationDate" ng-model="book.publicationDate"
+                               min="1800-01-01"  class="form-control"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row col-md-10">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th><span class="glyphicon-asterisk"></span> Book short description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><textarea ng-model="book.description" class="textarea col-sm-8" id="summary" rows="5" placeholder="..."></textarea></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row col-md-10">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="col-sm-6"><span class="glyphicon-asterisk"></span> Author First Name</th>
+                    <th class="col-sm-6"><span class="glyphicon-asterisk"></span> Author Last Name</th>
+                    <th class="col-sm-1"></th>
+                    <th class="col-sm-1"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="row in rows track by $index">
+                    <td><input ng-model="bookAuthors[$index].firstName" type="text" class="form-control" placeholder="..."/></td>
+                    <td><input ng-model="bookAuthors[$index].lastName" type="text" class="form-control" placeholder="..."/></td>
+                    <td>
+                        <button ng-click="vm.addRow()" class="btn btn-success btn-xs" datatype="plus">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </td>
+                    <td>
+                        <button ng-show="$index > 0" ng-click="vm.removeRow($index)" datatype="minus"
+                                class="btn btn-danger  btn-xs">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-10" style="padding-top: 2%;">
+            <button ng-click="vm.update()" class="btn btn-primary btn-block"><i class="fa fa-check-square-o"></i> Save
+            </button>
+        </div>
+    </div>
 </section>

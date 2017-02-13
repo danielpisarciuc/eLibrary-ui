@@ -53,7 +53,7 @@
                 <tbody>
                 <tr data-ng-repeat="detail in bookDetails.bookDetails">
                     <td><p>{{detail.subject}}</p></td>
-                    <td><p>{{detail.publicationDate}}</p></td>
+                    <td><p>{{detail.publicationDate | date:'yyyy-MM-dd'}}</p></td>
                 </tr>
                 </tbody>
             </table>
@@ -88,6 +88,5 @@
                 </tbody>
             </table>
         </div>
-    </div>
     </div>
 </section>

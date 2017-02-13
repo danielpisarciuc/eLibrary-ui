@@ -112,12 +112,12 @@
                     <td><input ng-model="bookAuthors[$index].firstName" type="text" class="form-control" placeholder="..."/></td>
                     <td><input ng-model="bookAuthors[$index].lastName" type="text" class="form-control" placeholder="..."/></td>
                     <td>
-                        <button ng-click="vm.addRow()" class="btn btn-success btn-xs" datatype="plus">
+                        <button id="addRow" ng-click="vm.addRow()" class="btn btn-success btn-xs" datatype="plus">
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>
                     </td>
                     <td>
-                        <button ng-show="$index > 0" ng-click="vm.removeRow($index)" datatype="minus"
+                        <button id="deleteRow" ng-show="$index > 0" ng-click="vm.removeRow($index)" datatype="minus"
                                 class="btn btn-danger  btn-xs">
                             <span class="glyphicon glyphicon-minus"></span>
                         </button>
@@ -127,7 +127,7 @@
             </table>
         </div>
         <div class="col-md-10" style="padding-top: 2%;">
-            <button ng-click="vm.save()" class="btn btn-primary btn-block"><i class="fa fa-check-square-o"></i> Save
+            <button id="createBook" ng-click="vm.save()" class="btn btn-primary btn-block"><i class="fa fa-check-square-o"></i> Save
             </button>
         </div>
     </div>

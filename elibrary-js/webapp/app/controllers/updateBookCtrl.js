@@ -4,23 +4,49 @@
     angular.module('App')
         .controller('UpdateBookCtrl', UpdateBookCtrl);
 
-    function UpdateBookCtrl($scope, $state, $log, bookService, referenceDataService) {
+    function UpdateBookCtrl($scope, $stateParams, bookService, referenceDataService) {
         var vm = this;
 
-        vm.books = [];
+        $scope.book = {};
 
-        vm.editBook = function (bookId) {
-            bookService.getBookById(bookId)
-                .then(bookFunction);
+        bookService.getBookById($stateParams.id)
+            .then(function bookFunction(book) {
+                $scope.book = book;
+            });
+
+        var BOOK_FORMAT = 'BOOK_FORMAT';
+        var BOOK_LANGUAGE = 'BOOK_LANGUAGE';
+        var BOOK_SUBJECT = 'BOOK_SUBJECT';
+
+        referenceDataService.bookFormat(BOOK_FORMAT)
+            .then(function bookFormats(bookFormats) {
+                $scope.bookFormats = bookFormats;
+            });
+
+        referenceDataService.bookLanguage(BOOK_LANGUAGE)
+            .then(function bookLanguages(bookLanguages) {
+                $scope.bookLanguages = bookLanguages;
+            });
+
+        referenceDataService.bookSubject(BOOK_SUBJECT)
+            .then(function bookSubject(bookSubjects) {
+                $scope.bookSubjects = bookSubjects;
+            });
+
+        vm.addLanguage = function (language) {
+            $scope.book.language = language.id;
         };
 
-        function bookFunction(books) {
-            if (angular.isArray(books)) {
-                vm.books = books;
+        vm.addFormat = function (format) {
+            $scope.book.format = format.id;
+        };
 
-            } else {
-                vm.books = [books];
-            }
+        vm.addSubject = function (subject) {
+            $scope.book.subject = subject.id;
+        };
+
+        vm.updateBook = function () {
+            //TODO implement this.
         }
     }
 }());
