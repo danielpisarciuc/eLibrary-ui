@@ -14,7 +14,9 @@ exports.config = {
   suites: {
     welcome: 'tests/welcome.page.spec.js',
     viewBooks: 'tests/view.books.spec.js',
-    addBooks: 'tests/add.book.spec.js'
+    addBooks: 'tests/add.book.spec.js',
+    updateBook: 'tests/update.book.spec.js',
+    authorBooks: 'tests/author.books.spec.js'
   },
 
   baseUrl: 'http://localhost:9092/elibrary-js/webapp/#/welcome',
