@@ -4,7 +4,7 @@ describe('eLibrary author books', function () {
     it('view author books based on title', function () {
         navigation.goToViewBooks();
         browser.sleep(2000);
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:9092/elibrary-js/webapp/#/libraryBooks");
+        expect(browser.getCurrentUrl()).toEqual("http://127.0.0.1:9092/elibrary-js/webapp/#/libraryBooks");
 
         element(by.xpath('html/body/div/div[1]/section/ui-view/section[2]/div[1]/input')).sendKeys('995');
         browser.sleep(2000);

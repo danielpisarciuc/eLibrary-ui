@@ -10,7 +10,7 @@ describe('eLibrary add book tab', function () {
         browser.sleep(1000);
 
         element(by.xpath('html/body/div/div[1]/section/ui-view/section[2]/div/div[2]/table/tbody/tr/td[1]/input')).click();
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:9092/elibrary-js/webapp/#/addBook");
+        expect(browser.getCurrentUrl()).toEqual("http://127.0.0.1:9092/elibrary-js/webapp/#/addBook");
         browser.sleep(2000);
     });
 
@@ -61,7 +61,7 @@ describe('eLibrary add book tab', function () {
 
     it('verify if book is present into library books view', function () {
         navigation.goToViewBooks();
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:9092/elibrary-js/webapp/#/libraryBooks");
+        expect(browser.getCurrentUrl()).toEqual("http://127.0.0.1:9092/elibrary-js/webapp/#/libraryBooks");
 
         element(by.xpath('html/body/div/div[1]/section/ui-view/section[2]/div[1]/input')).sendKeys(isbn);
         browser.sleep(3500);
@@ -73,7 +73,7 @@ describe('eLibrary add book tab', function () {
 
     it('search book based on isbn', function () {
         navigation.goHome();
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:9092/elibrary-js/webapp/#/welcome");
+        expect(browser.getCurrentUrl()).toEqual("http://127.0.0.1:9092/elibrary-js/webapp/#/welcome");
 
         element(by.model('searchTerm')).sendKeys(isbn);
         browser.sleep(3500);
@@ -87,7 +87,7 @@ describe('eLibrary add book tab', function () {
     it('delete book based on isbn', function () {
         navigation.goToViewBooks();
         browser.sleep(3500);
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:9092/elibrary-js/webapp/#/libraryBooks");
+        expect(browser.getCurrentUrl()).toEqual("http://127.0.0.1:9092/elibrary-js/webapp/#/libraryBooks");
 
         element(by.xpath('html/body/div/div[1]/section/ui-view/section[2]/div[1]/input')).sendKeys(isbn);
         browser.sleep(3500);

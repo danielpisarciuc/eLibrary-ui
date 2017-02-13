@@ -1,7 +1,7 @@
 exports.config = {
 
   //The address of a running selenium server.
-  seleniumAddress: 'http://localhost:4444/wd/hub',
+  seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
 
   //Capabilities to be passed to the webdriver instance.
   capabilities: {
@@ -19,7 +19,7 @@ exports.config = {
     authorBooks: 'tests/author.books.spec.js'
   },
 
-  baseUrl: 'http://localhost:9092/elibrary-js/webapp/#/welcome',
+  baseUrl: 'http://127.0.0.1:9092/elibrary-js/webapp/#',
 
   jasmineNodeOpts: {
     onComplete: null,
