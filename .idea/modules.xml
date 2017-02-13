@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/eLibrary-ui.iml" filepath="$PROJECT_DIR$/.idea/eLibrary-ui.iml" />
       <module fileurl="file://$PROJECT_DIR$/elibrary-js/elibrary-js.iml" filepath="$PROJECT_DIR$/elibrary-js/elibrary-js.iml" />
+      <module fileurl="file://$PROJECT_DIR$/integration-tests/integration-tests.iml" filepath="$PROJECT_DIR$/integration-tests/integration-tests.iml" />
     </modules>
   </component>
 </project>

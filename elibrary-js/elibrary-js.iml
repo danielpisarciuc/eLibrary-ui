@@ -3,5 +3,6 @@
   <component name="NewModuleRootManager" inherit-compiler-output="false">
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="elibrary-js node_modules" level="project" />
   </component>
 </module>

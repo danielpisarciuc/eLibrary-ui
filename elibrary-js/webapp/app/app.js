@@ -37,7 +37,7 @@
             })
 
             .state('updateBook', {
-                url: '/updateBook',
+                url: '/updateBook/:id',
                 templateUrl: 'app/views/updateBook.html',
                 controller: 'UpdateBookCtrl as vm'
             });
